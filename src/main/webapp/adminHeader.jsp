@@ -17,23 +17,19 @@
 
 						<!-- menu start -->
 						<nav class="main-menu">
+						<c:choose>
+						<c:when test="${not empty role}">
 							<ul>
-								<li class="current-list-item"><a href="#">Home</a>
-									<ul class="sub-menu">
-										<li><a href="index">Static Home</a></li>
-										<li><a href="index_2.jsp">Slider Home</a></li>
-									</ul>
+								<li class="current-list-item"><a href="admin">Home</a>
+									
 								</li>
 								<li><a href="about.jsp">About</a></li>
-								<li><a href="#">Pages</a>
+								<li><a href="#">Items</a>
 									<ul class="sub-menu">
-										<li><a href="404.jsp">404 page</a></li>
-										<li><a href="about.jsp">About</a></li>
-										<li><a href="cart.jsp">Cart</a></li>
-										<li><a href="checkout.jsp">Check Out</a></li>
-										<li><a href="contact.jsp">Contact</a></li>
-										<li><a href="news.jsp">News</a></li>
-										<li><a href="shop.jsp">Shop</a></li>
+										<li><a href="404.jsp">Add Item</a></li>
+										<li><a href="about.jsp">Search Item</a></li>
+										<li><a href="cart.jsp">View All Items</a></li>
+										
 									</ul>
 								</li>
 								<li><a href="news.jsp">News</a>
@@ -43,13 +39,11 @@
 									</ul>
 								</li>
 								<li><a href="contact.jsp">Contact</a></li>
-								<li><a href="shop.jsp">Shop</a>
+								<li><a href="shop.jsp">Orders</a>
 									<ul class="sub-menu">
-										<li><a href="shop.jsp">Shop</a></li>
-										<li><a href="checkout.jsp">Check Out</a></li>
-										<li><a href="single-product.jsp">Single Product</a></li>
-										<li><a href="cart.jsp">Cart</a></li>
-										<li><a href="cart.jsp">login</a></li>
+										<li><a href="shop.jsp">All orders</a></li>
+										<li><a href="checkout.jsp">Accept/Reject Orders</a></li>
+										<li><a href="single-product.jsp">Search Orders</a></li>
 									</ul>
 								</li>
 								<li>
@@ -60,16 +54,23 @@
 									</div>
 								</li>
 								<li>
-								<c:choose>
 								
-								<c:when test="${not empty userid}">
+								
+								
 								<h3 class="text-warning">Welcome ${userid.fname}</h3>
 								<a href="logout">Logout</a>
-								</c:when>
-								<c:otherwise><a href="login">Login</a><a href="register">Register</a> </c:otherwise>
-								</c:choose>
+								
 								</li>
 							</ul>
+							</c:when>
+							<c:otherwise>
+							<ul>
+							<li>
+								<a href="login">Login</a><a href="register">Register</a> 
+								</li>
+							</ul>
+							</c:otherwise>
+							</c:choose>
 						</nav>
 						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>

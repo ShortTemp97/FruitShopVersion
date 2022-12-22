@@ -122,7 +122,7 @@
 						<div class="cart-buttons">
 							<a href="index" class="boxed-btn">Add Items</a>
 							<!-- <a href="checkout.jsp" class="boxed-btn black">Place Order</a> -->
-							<a href="placeOrder" class="boxed-btn black">Place Order</a>
+							<a href="PlaceOrder.jsp" class="boxed-btn black">Place Order</a>
 						</div>
 					</div>
 

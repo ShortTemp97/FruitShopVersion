@@ -71,14 +71,13 @@
 						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 						      <div class="card-body">
 						        <div class="billing-address-form">
-						        	<form action="">
-						        		<p><input type="text" placeholder="Name" name="name" value="${param.name}"></p>
-						        		<p><input type="email" placeholder="Email" name="email" value="${param.email}"></p>
+						        	<form action="placeOrder?location=PlaceOrder.jsp"  method="post">
+						        		<p><input type="text" placeholder="Name" name="name" value="${userid.fname} ${userid.lname}"></p>
+						        		<p><input type="email" placeholder="Email" name="email" value="${userid.email}"></p>
 						        		<p><input type="text" placeholder="Address" name="address" value="${param.address}"></p>
-						        		<p><input type="tel" placeholder="Phone" name="mobile" value="${param.mobile}"></p>
+						        		<p><input type="tel" placeholder="Phone" name="mobile" value="${userid.mobile}"></p>
 						        		<p><input type="hidden" name="location" value="${param.location}"></p>
-						        		<p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something" value="${param.bill}"></textarea></p>
-						        	</form>
+						        		
 						        </div>
 						      </div>
 						    </div>
@@ -125,12 +124,14 @@
 						</table>
 						<c:choose>
 						<c:when test="${not empty userid}">
-							<a href="myorder" class="boxed-btn">Place Order</a>
+							<input type="submit" value="Place Order">
 						</c:when>
 						<c:otherwise>
 							<a href="login.jsp?location=PlaceOrder.jsp" class="boxed-btn">login</a>
 						</c:otherwise>
 						</c:choose>
+						        	</form>
+						
 					</div>
 				</div>
 			</div>
@@ -141,77 +142,7 @@
 	<!-- logo carousel -->
 		<!-- end logo carousel -->
 
-	<!-- footer -->
-	<div class="footer-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box about-widget">
-						<h2 class="widget-title">About us</h2>
-						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box get-in-touch">
-						<h2 class="widget-title">Get in Touch</h2>
-						<ul>
-							<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
-							<li>support@fruitkha.com</li>
-							<li>+00 111 222 3333</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box pages">
-						<h2 class="widget-title">Pages</h2>
-						<ul>
-							<li><a href="index">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="services.html">Shop</a></li>
-							<li><a href="news.html">News</a></li>
-							<li><a href="contact.html">Contact</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box subscribe">
-						<h2 class="widget-title">Subscribe</h2>
-						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end footer -->
-	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.<br>
-						Distributed By - <a href="https://themewagon.com/">Themewagon</a>
-					</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
+<jsp:include page="footer.jsp"></jsp:include>
 	
 	<!-- jquery -->
 	<script src="assets/js/jquery-1.11.3.min.js"></script>

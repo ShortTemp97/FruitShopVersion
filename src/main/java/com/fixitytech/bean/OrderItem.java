@@ -6,6 +6,7 @@ public class OrderItem extends Cart{
 	int status;
 	double totalAmt;
 	
+	
 	public int getOrderId() {
 		return orderId;
 	}
@@ -24,6 +25,9 @@ public class OrderItem extends Cart{
 	public void setTotalAmt(double totalAmt) {
 		this.totalAmt=totalAmt;
 		
+	}
+	public double getTotalAmt() {
+		return totalAmt;
 	}
 
 

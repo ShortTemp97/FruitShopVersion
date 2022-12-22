@@ -5,13 +5,20 @@ public class Order {
 	String customerName;
 	String orderDate;
 	String mail;
-	long mobile;
+	String mobile;
 	double total;
+	String address;
 	
 	
 	
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getAddress() {
+		return address;
+	}
 	
-	public String getCustomerName() {
+	public String getCustomerName() { 
 		return customerName;
 	}
 	public void setCustomerName(String customerName) {
@@ -30,11 +37,11 @@ public class Order {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public long getMobile() {
+	public String getMobile() {
 		return mobile;
 	}
-	public void setMobile(long mobile) {
-		this.mobile = mobile;
+	public void setMobile(String mobile2) {
+		this.mobile = mobile2;
 	}
 	public double getTotal() {
 		return total;

@@ -16,13 +16,14 @@ public class OrderDAO {
 		
 		Connection con=ConnectionDAO.getConnection();
 		con.setAutoCommit(false);
-		PreparedStatement ps=con.prepareStatement("Insert into orders (customerName,orderDate,contactDetail,mail,totalAmount) values(?,Curdate(),?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+		PreparedStatement ps=con.prepareStatement("Insert into orders (customerName,orderDate,contactNo,mail,address,totalAmount) values(?,Curdate(),?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 		
 		//ResultSet rs=ps.getGeneratedKeys();
 		ps.setString(1, order.getCustomerName());
-		ps.setLong(2, order.getMobile());
+		ps.setString(2, order.getMobile());
 		ps.setString(3, order.getMail());
-		ps.setDouble(4, order.getTotal());
+		ps.setString(4, order.getAddress());
+		ps.setDouble(5, order.getTotal());
 		int m=0;
 		int n=ps.executeUpdate();
 		if(n>0)

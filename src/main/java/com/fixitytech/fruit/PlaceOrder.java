@@ -1,6 +1,8 @@
 package com.fixitytech.fruit;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fixitytech.DAO.OrderDAO;
 import com.fixitytech.bean.Cart;
+import com.fixitytech.bean.Order;
+import com.fixitytech.bean.OrderItem;
 
 /**
  * Servlet implementation class PlaceOrder
@@ -23,9 +28,10 @@ public class PlaceOrder extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	OrderDAO orderdao;
     public PlaceOrder() {
         super();
-        // TODO Auto-generated constructor stub
+        orderdao=new OrderDAO();
     }
 
 	/**
@@ -55,14 +61,49 @@ public class PlaceOrder extends HttpServlet {
 		String email=request.getParameter("email");
 		String address=request.getParameter("address");
 		String mobile=request.getParameter("mobile");
-		String bill=request.getParameter("bill");
 		
+		//System.out.println(name);
+		Order order=new Order();
+		List<OrderItem> ordersList=new ArrayList<>();
 		//String go=request.getParameter("location");
+		double total=0;
 		for(Cart cartItem:list)
 		{
+			OrderItem orderItem=new OrderItem();
+			
+			orderItem.setItemId(cartItem.getItemId());
+			orderItem.setItemName(cartItem.getItemName());
+			//System.out.println(orderItem.getItemName());
+			orderItem.setTotalAmt(cartItem.getSubAmt());
+			
+			total+=cartItem.getSubAmt();
+			
+			ordersList.add(orderItem);
 			
 		}
+		//System.out.println(total);
 		
+		order.setCustomerName(name);
+		order.setMail(email);
+		order.setAddress(address);
+		order.setMobile(mobile);
+		order.setTotal(total);
+		
+		session.setAttribute("orderDetails", order);
+		
+		try {
+			int orderId=orderdao.placeOrder(order, ordersList);
+			if(orderId>0)
+			{
+				request.setAttribute("order", orderId);
+				RequestDispatcher rd=request.getRequestDispatcher("OrderSuccess.jsp");
+				rd.forward(request, response);
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}
